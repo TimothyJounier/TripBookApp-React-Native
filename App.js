@@ -9,6 +9,9 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 // Screens 
 import { Onboarding, DestinationDetail } from './screens';
 
+// Tabs
+import Tabs from './navigation/tabs'
+
 // Constants
 import COLORS from './constants/theme';
 import SIZES from './constants/theme';
@@ -47,7 +50,7 @@ const App = () => {
               >
                 <Image 
                   source={icons.barMenu}
-                  resizeMethod="contain"
+                  resizeMode="contain"
                   style={{
                     width: 25,
                     height: 25,
@@ -61,7 +64,11 @@ const App = () => {
           }}
         />
 
-        
+          {/* Tabs */}
+          <Stack.Screen 
+            name="Home"
+            component={Tabs}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   )
