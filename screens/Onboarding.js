@@ -8,7 +8,11 @@ import {
     TouchableOpacity,
     ImageStore
 } from 'react-native';
+
+//import gradient
 import LinearGradient from 'react-native-linear-gradient';
+
+// import constants
 import { COLORS, FONTS, images, SIZES } from '../constants';
 
 
@@ -32,8 +36,8 @@ const Onboarding = ({navigation}) => {
 
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                 <View style={{ alignItems: 'center', marginHorizontal: SIZES.padding }}>
-                    <Text style={{ ...FONTS.h2 }}>Digital Ticket</Text>
-                    <Text style={{ color: COLORS.gray, marginTop: SIZES.padding, textAlign: 'center', ...FONTS.body3 }}>Easy solution to buy tickets for your travel, business trips, transportation, lodging and culinary.</Text>
+                    <Text>Ticket Digital </Text>
+                    <Text style={{ color: COLORS.gray, marginTop: SIZES.padding, textAlign: 'center'}}>Solution facile pour acheter des billets pour vos voyages, voyages d'affaires, transports, hébergement et gastronomie..</Text>
                 </View>
 
                 <TouchableOpacity
@@ -46,7 +50,7 @@ const Onboarding = ({navigation}) => {
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
                     >
-                        <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Start !</Text>
+                        <Text style={{ color: COLORS.white }}>Start !</Text>
 
                     </LinearGradient>
                 </TouchableOpacity>

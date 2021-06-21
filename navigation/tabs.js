@@ -104,3 +104,5 @@ const Tabs = () => {
         </Tab.Navigator>
     )
 }
+
+export default Tabs;
