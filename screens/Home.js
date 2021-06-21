@@ -45,7 +45,60 @@ const OptionItem = ({ icon, bgColor, label, onPress }) => {
 }
 
 
-const Home = () => {
+const Home = ({ navigation }) => {
+
+    // Data
+    const [destinations, setDestinations] = React.useState ([
+        {
+            id: 0,
+            name: "Ski Villa",
+            images:images.skiVilla
+        },
+        {
+            id: 1,
+            name: "Climbing hill",
+            images:images.climbingHills
+        },
+        {
+            id: 2,
+            name: "Frozen Hills",
+            images:images.frozenHills
+        },
+        {
+            id: 3,
+            name: "Beach",
+            images:images.beach
+        },
+    ])
+
+    // render 
+
+    function renderDestinations( item, index ){
+        var destinationStyle = {};
+
+        if (index == 0 ) {
+            destinationStyle = { marginLeft: SIZES.padding };
+        }
+        return (
+            <TouchableOpacity
+                style={{ justifyContent: 'center', marginHorizontal: SIZES.base, ...destinationStyle}}
+                onPress={() => { navigation.navigate("DestinationDetail")}}
+            >
+                <Image 
+                    source={item.images}
+                    resizeMode="cover"
+                    style={{
+                        width: SIZES.width * 0.28,
+                        height: '82%',
+                        borderRadius: 15
+                    }}
+                />
+                <Text style={{ marginTop: SIZES.base / 2}}>{item.name}</Text>
+            </TouchableOpacity>
+        )
+    }
+
+
     return (
         <View style={styles.container}>
             {/* Bannière */}
@@ -95,25 +148,25 @@ const Home = () => {
                 <View style={{flexDirection: "row", marginTop: SIZES.radius, paddingHorizontal: SIZES.base}}>
                     <OptionItem 
                         icon={icons.bed}
-                        bgColor={['#46aeff', '#5884ff']}
+                        bgColor={['#ffc465', '#ff9c5F']}
                         label= "flight"
                         onPress={() => {console.log("flight")}}
                     />
                     <OptionItem 
                         icon={icons.eat}
-                        bgColor={['#fdd90f', '#fcda13']}
+                        bgColor={['#7cf1fb', '#4ebefd']}
                         label= "Train"
                         onPress={() => {console.log("Train")}}
                     />
                     <OptionItem 
                         icon={icons.compass}
-                        bgColor={['#e973ad', '#da5df2']}
+                        bgColor={['#7be993', '#46ccaf']}
                         label= "Bus"
                         onPress={() => {console.log("Bus")}}
                     />
                     <OptionItem 
                         icon={icons.event}
-                        bgColor={['#fcaba8', '#fe6bba']}
+                        bgColor={['#fca397', '#fc7b6c']}
                         label= "Taxi"
                         onPress={() => {console.log("Taxi")}}
                     />
@@ -121,7 +174,14 @@ const Home = () => {
             </View>
             {/* Destination */}
             <View style={{ flex: 1 }}>
-                
+                <Text style={{ marginTop: SIZES.base, marginHorizontal: SIZES.padding }}>Destination</Text>
+                <FlatList 
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    data={destinations}
+                    keyExtractor={item => item.id.toString()}
+                    renderItem={({ item, index }) => renderDestinations( item, index)}
+                />
             </View>
         </View>
     )
